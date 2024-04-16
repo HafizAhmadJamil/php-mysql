@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d"
+
+  www:
+    container_name: php
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "./src:/var/www/html"
+      - "./src/custom/apache.conf:/etc/apache2/sites-available/000-default.conf" # Mount custom Apache config directory
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - ./.env
+    command: sh -c "composer install && apache2-foreground"
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306

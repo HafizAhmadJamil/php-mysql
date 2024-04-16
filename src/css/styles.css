@@ -1,0 +1,54 @@
+/* Common styles */
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  max-width: 400px; /* Adjust as needed */
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+a {
+  display: block;
+  text-align: center;
+}
+
+/* Sign-in page specific styles */
+.signin-container {
+  max-width: 400px; /* Adjust as needed */
+}
+
+/* Welcome page specific styles */
+.welcome-container {
+  max-width: 600px; /* Adjust as needed */
+}
